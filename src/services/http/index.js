@@ -1,27 +1,36 @@
 import axios from 'axios'
+import { API_URL } from '@/config/app'
 import auth from '@/services/auth/'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000/api'
+  baseURL: API_URL
 })
 
 axiosInstance.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 axiosInstance.interceptors.request.use(
-  config => {
+  request => {
     const token = auth.getToken()
     if (token) {
-      config.headers['X-AUTH-TOKEN'] = token
+      request.headers['Authorization'] = 'Bearer ' + token
     }
-    return config
+    return request
   },
   error => {
-    console.log('nes majci')
     console.log(error)
-    return Promise.reject(error)
+    const originalRequest = error.config
+    if (error.response.status !== 401 && originalRequest._retry) {
+      return Promise.reject(error)
+    }
+    originalRequest._retry = true
+    return auth.refreshToken(error)
+      .then(response => {
+        auth.setData(response.data)
+        axiosInstance.defaults.headers.common['Authorization'] = 'Bearer ' + auth.getToken()
+        originalRequest.headers['Authorization'] = 'Bearer ' + auth.getToken()
+        return axiosInstance(originalRequest)
+      })
   }
 )
 
-const http = axiosInstance
-
-export { http }
+export default axiosInstance
