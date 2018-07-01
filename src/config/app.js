@@ -1,1 +1,1 @@
-export const AUTH_KEY = 'authData'
+export const STORAGE_AUTH_KEY = 'authData'

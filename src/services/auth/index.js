@@ -1,12 +1,12 @@
-import { AUTH_KEY } from '@/config/app'
+import { STORAGE_AUTH_KEY } from '@/config/app'
 
 export default {
   getData () {
     let data
     try {
-      data = JSON.parse(localStorage.getItem(AUTH_KEY))
+      data = JSON.parse(localStorage.getItem(STORAGE_AUTH_KEY))
     } catch {
-      localStorage.removeItem(AUTH_KEY)
+      localStorage.removeItem(STORAGE_AUTH_KEY)
     }
     return data
   },
@@ -25,7 +25,7 @@ export default {
     return data.token
   },
   setData (data) {
-    localStorage.setItem(AUTH_KEY, JSON.stringify(data))
+    localStorage.setItem(STORAGE_AUTH_KEY, JSON.stringify(data))
   },
   refreshToken () {
     return new Promise ((resolve, reject) => {
