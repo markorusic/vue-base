@@ -12,6 +12,10 @@ export default {
     return data
   },
   getUser () {
+    return {
+      name: 'marko rusic',
+      role: 'dispatcher'
+    }
     const data = this.getData()
     if (!data) return
     return data.user

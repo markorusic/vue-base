@@ -8,6 +8,7 @@ export const can = (action) => {
   }
   const permissions = PERMISSIONS[user.role]
   if (!permissions) {
+    console.warn(`No permissions for ${user.role} role`)
     return false
   }
   if (permissions === '*') {

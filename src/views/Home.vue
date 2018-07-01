@@ -14,7 +14,7 @@ export default {
     HelloWorld
   },
   created () {
-    console.log(this.$can('CREATE_TOUR'))
+    console.log(this.$can('MANAGE_TOUR'))
   }
 }
 </script>
