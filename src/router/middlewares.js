@@ -6,11 +6,10 @@ export default [
     if (!roles) {
       return next()
     }
-    const user = auth.getUser()
-    if (!user) {
+    if (!auth.isAuthenticated()) {
       return next('login')
     }
-    if (!roles.includes(user.role)) {
+    if (!roles.includes(auth.getUser().role)) {
       return next('denied')
     }
     next()

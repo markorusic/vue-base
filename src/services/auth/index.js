@@ -24,6 +24,9 @@ export default {
     }
     return data.token
   },
+  isAuthenticated () {
+    return this.getUser() && this.getToken()
+  },
   setData (data) {
     localStorage.setItem(STORAGE_AUTH_KEY, JSON.stringify(data))
   },
