@@ -12,6 +12,7 @@
     "@casl/vue": "^0.1.1",
     "axios": "^0.18.0",
     "moment": "^2.22.2",
+    "pluralize": "^7.0.0",
     "register-service-worker": "^1.0.0",
     "v-toaster": "^1.0.3",
     "vue": "^2.5.16",

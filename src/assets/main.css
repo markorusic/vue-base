@@ -1,3 +1,13 @@
+body {
+  font-family: Helvetica;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a.router-link-exact-active.router-link-active {
+  font-weight: bold;
+}
 .uc-first {
   text-transform: capitalize;
 }
@@ -75,8 +85,7 @@
   display: flex;
   flex-direction: column !important;
   justify-content: center;
-  align-items: cen
-  ter;
+  align-items: center;
 }
 .flex-col-start {
   display: flex;
