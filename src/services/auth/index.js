@@ -38,6 +38,7 @@ export default {
       if (!refreshToken) {
         return reject(initialError)
       }
+      // todo: make real http call
       return resolve({
         token: '123',
         refresh_token: '321',

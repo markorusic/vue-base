@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { API_URL } from '@/config/app'
 import auth from '@/services/auth/'
+import { API_URL } from '@/config/app'
 
 const axiosInstance = axios.create({
   baseURL: API_URL
